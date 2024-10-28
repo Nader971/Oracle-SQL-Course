@@ -9,6 +9,7 @@ Example 2: select first_name "First Name" from employees;
 ---------------------------------------------------------------------------------------------------------
 Lesson 6
 Concatenation Operator: -  
+
 •	Links columns or character strings to other columns.
 •	Is represented by two vertical bars (||).
 •	Creates a resultant column that is a character expression.
@@ -23,9 +24,11 @@ Duplicate Rows: removes duplicates from the table.
 Example: select distinct DEPARTMENT_ID from employees;
 Describe: describe the created tables.
 Example: desc employees;
+
 ---------------------------------------------------------------------------------------------------------
 
 Lesson 7
+
 Restricting & Sorting data: using where to restrict or sort the data
 Example: SELECT employee_id, last_name, job_id, department_id, salary, hire_date
 FROM employees
