@@ -240,10 +240,14 @@ o	Example1: SELECT hire_date, TO_CHAR(hire_date, 'dd-mm-yyyy') FROM employees;
 ![image](https://github.com/user-attachments/assets/51a66ec2-3542-4b0f-b490-98d770d5cc77)
  
 o	Example2: SELECT first_name, salary, TO_CHAR(salary, 'L999,999,999.00') FROM employees;
+
+![image](https://github.com/user-attachments/assets/efff017f-0f70-48e8-af93-81e3f5a7d3f7)
  
 •	TO_DATE: Convert a character string to a DATE format.
 
 o	Example1: SELECT last_name, hire_date FROM employees WHERE hire_date <= TO_DATE('01/02/2007', 'dd-mm-yyyy');
+
+![image](https://github.com/user-attachments/assets/bb8fc737-ac5e-4e2a-97c2-7ea1c17ca723)
  
 •	TO_NUMBER: Convert a character string to a number format.
 
