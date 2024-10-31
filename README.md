@@ -233,13 +233,11 @@ Explicit data type conversion: this uses functions to change the data type from 
  
 •	TO_CHAR: Used to change date or number to char.
 
+o	Example1: SELECT hire_date, TO_CHAR(hire_date, 'dd-mm-yyyy') FROM employees;
+
 ![image](https://github.com/user-attachments/assets/6c7da96e-7385-4d51-9b09-185d586bd9f7)
 
 ![image](https://github.com/user-attachments/assets/51a66ec2-3542-4b0f-b490-98d770d5cc77)
-
-
-
-o	Example1: SELECT hire_date, TO_CHAR(hire_date, 'dd-mm-yyyy') FROM employees;
  
 o	Example2: SELECT first_name, salary, TO_CHAR(salary, 'L999,999,999.00') FROM employees;
  
