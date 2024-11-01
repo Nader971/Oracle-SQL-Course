@@ -279,7 +279,7 @@ o	Example: SELECT first_name, salary, commission_pct, nvl2(commission_pct, salar
 
 o	Example: SELECT  length(first_name), length(last_name), NULLIF(length(first_name), length(last_name)) FROM employees;
 
-•	COALESCE: search between values and when find the first not null value get it.
+•	COALESCE: search between values and when you find the first not null value get it.
 
 o	Example: SELECT COALESCE(NULL, NULL, NULL, 1,NULL) FROM dual;
 
@@ -332,6 +332,32 @@ o	Example: SELECT SUM(salary) "SUM" FROM employees;
 •	STDDEV
 
 •	VRINANCE
+
+--------------------------------------------------------
+
+LESSON 17
+GROUP BY: You can divide table rows into smaller groups using the GROUP BY  clause.
+
+	Example: SELECT department_id, job_id, commission_pct, count(*) FROM employees
+WHERE department_id = 50
+GROUP BY department_id, job_id, commission_pct ORDER BY 2;
+
+HAVING: we used likes order by but with GROUP BY.
+
+	Example: SELECT department_id, job_id, commission_pct, count(*) FROM employees
+WHERE department_id = 50
+GROUP BY department_id, job_id, commission_pct
+HAVING count(*) > 5 ORDER BY 2;
+
+NESTING GROUP FUNCTIONS: we can use nesting with GROUP FUNCTIONS
+
+	Example: SELECT MAX(avg(salary)) FROM employees GROUP BY salary;
+
+
+
+
+
+
 
 
 
