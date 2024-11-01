@@ -336,6 +336,7 @@ o	Example: SELECT SUM(salary) "SUM" FROM employees;
 --------------------------------------------------------
 
 LESSON 17
+
 GROUP BY: You can divide table rows into smaller groups using the GROUP BY  clause.
 
 	Example: SELECT department_id, job_id, commission_pct, count(*) FROM employees
@@ -353,7 +354,41 @@ NESTING GROUP FUNCTIONS: we can use nesting with GROUP FUNCTIONS
 
 	Example: SELECT MAX(avg(salary)) FROM employees GROUP BY salary;
 
+--------------------------------------------------------------
 
+LESSON 18
+
+Types Of Joins: Joins that are compliant with the SQL: 1999 standard include the following:
+
+	NATRUAL JOINS: Is 1 of the Joins types.
+
+o	NATRUAL JOINS: We Used to join 2 tables with the PK and FK its have to be the same data type
+
+	Example: SELECT department_id, department_name, location_id, city FROM departments d NATURAL JOIN locations;
+
+o	USING: we used it when we needed to join 2 tables with different data types.
+
+	Example: SELECT department_id, department_name, location_id, city FROM  departments d JOIN locations USING (location_id);
+
+o	ON: We used when we needed to join 2 tables with different names.
+
+	Example: SELECT department_id, department_name location_id, city FROM departments d JOIN locations l ON (d.location_id = l.location_id);
+
+o	More than 2 tables: we can use more than 2 tables.
+
+	Example: SELECT e.last_name, d.department_id, department_name, l.location_id, city FROM departments d JOIN locations l ON (d.location_id = l.location_id) JOIN employees e ON d.manager_id =  e.employee_id;
+
+o	WHERE & AND & OR: we can use where, and, or in different tables.
+
+	Example: SELECT e.last_name, d.department_id, department_name, l.location_id, city FROM departments d JOIN locations l ON (d.location_id = l.location_id) JOIN employees e ON d.manager_id = e.employee_id WHERE d.department_id = 70 OR d.department_name = 'IT' AND e.last_name = 'Hunold';
+
+o	SELF JOIN: You can make 2 tables and join each other from the table itself.
+
+	Example: SELECT a.employee_id worker, a.last_name, b.employee_id manager, b.last_name FROM employees a JOIN employees b ON a.manager_id = b.employee_id;
+
+o	None EquiJoins: Retrieving Records with NoneEquiJoins.
+
+	Example: SELECT e.last_name, e.salary, j.grade_level FROM employees e JOIN job_grades j ON e.salary BETWEEN j.lowest_sal AND j.highest_sal;
 
 
 
