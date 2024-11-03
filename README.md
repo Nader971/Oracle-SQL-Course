@@ -390,10 +390,54 @@ o	None EquiJoins: Retrieving Records with NoneEquiJoins.
 
 	Example: SELECT e.last_name, e.salary, j.grade_level FROM employees e JOIN job_grades j ON e.salary BETWEEN j.lowest_sal AND j.highest_sal;
 
+--------------------------------------------------------------------------------------------------------
 
+LESSON 19
 
+	OUTER JOIN:
 
+o	LEFT OUTER JOIN: shows the NULLS value of the left columns.
 
+	Example: SELECT a.employee_id worker, a.last_name, b.employee_id manager, b.last_name FROM employees a LEFT OUTER JOIN employees b ON a.manager_id = b.employee_id;
+    
+o	RIGHT OUTER JOIN: shows the NULLS value of the right columns.
 
+	Example: SELECT e.last_name, d.department_id, d.department_name FROM employees e RIGHT OUTER JOIN departments d ON (e.department_id = d.department_id); 
 
+o	FULL OUTER JOIN: shows the NULLs value of ALL  columns.
 
+	    Example: SELECT e.last_name, d.department_id, d.department_name FROM employees e FULL OUTER JOIN departments d ON (e.department_id = d.department_id);
+
+	Cartesian Product: All rows in the first table are joined to all rows in the second table, to avoid a Cartesian product, always include a valid join condition.
+
+o	CROSS JOIN: 
+
+	SELECT last_name, department_name FROM employees CROSS JOIN departments;
+
+---------------------------------------------------------------------------------
+
+LESSON 20
+
+Subquery: We can use another select statement to get a specific output to use in the main statement.
+
+•	we use it in ().
+
+•	It's better to put it in the right code so it can be read easily.
+
+•	We use Single-row operators with Single-row subquery and Multiple-row operators with Multiple-row subquery.
+
+Example: SELECT last_name, salary FROM employees WHERE salary > (SELECT salary FROM employees WHERE last_name = 'Abel');
+
+Single-row subqueries: Return only one row & use single-row comparison operators.
+  
+Example: SELECT last_name, salary FROM employees WHERE salary > (SELECT salary FROM employees WHERE last_name = 'Abel') AND salary < (SELECT salary FROM employees WHERE last_name = 'King' and salary > 10000);
+
+•	Group Functions in a Subquery: we can use group functions in and with subqueries.
+
+o	Example: SELECT last_name, salary FROM employees WHERE salary > (SELECT AVG(salary) "Average" FROM employees) AND salary < (SELECT MAX(salary) "MAX" FROM employees);
+
+•	HAVING clause with Subquery:
+
+o	Example: SELECT department_id, min(salary) FROM employees GROUP BY department_id HAVING min(salary) > (SELECT min(salary) "Minimum" FROM employees WHERE department_id =50);
+
+-------------------------------------------------------------------------------------------
