@@ -404,7 +404,7 @@ o	RIGHT OUTER JOIN: shows the NULLS value of the right columns.
 
 	Example: SELECT e.last_name, d.department_id, d.department_name FROM employees e RIGHT OUTER JOIN departments d ON (e.department_id = d.department_id); 
 
-o	FULL OUTER JOIN: shows the NULLs value of ALL  columns.
+o	FULL OUTER JOIN: shows the NULL value of ALL  columns.
 
 	    Example: SELECT e.last_name, d.department_id, d.department_name FROM employees e FULL OUTER JOIN departments d ON (e.department_id = d.department_id);
 
@@ -418,13 +418,13 @@ o	CROSS JOIN:
 
 LESSON 20
 
-Subquery: We can use another select statement to get a specific output to use in the main statement.
+Subquery: We can use another select statement to get a specific output for the main statement.
 
 •	we use it in ().
 
 •	It's better to put it in the right code so it can be read easily.
 
-•	We use Single-row operators with Single-row subquery and Multiple-row operators with Multiple-row subquery.
+•	We use single-row operators with single-row subqueries and multiple-row operators with multiple-row subqueries.
 
 Example: SELECT last_name, salary FROM employees WHERE salary > (SELECT salary FROM employees WHERE last_name = 'Abel');
 
@@ -444,7 +444,7 @@ o	Example: SELECT department_id, min(salary) FROM employees GROUP BY department_
 
 LESSON 21
 
-Multiple-row subqueries: when we need to use multiple row to used.
+Multiple-row subqueries: when we need to use multiple rows to use.
 
 •	IN : SELECT employee_id, last_name, job_id, salary FROM employees WHERE salary IN OR    = ANY (SELECT salary FROM employees WHERE job_id = 'IT_PROG') AND job_id <> 'IT_PROG';
 
@@ -452,7 +452,7 @@ Multiple-row subqueries: when we need to use multiple row to used.
 
 •	ALL : SELECT employee_id, last_name, job_id, salary FROM employees WHERE salary < ALL (SELECT salary FROM employees WHERE job_id = 'IT_PROG') AND job_id <> 'IT_PROG';
 
-•	NULL VALUES : will always get 0 rows if we have null;
+•	NULL VALUES: will always get 0 rows if we have null;
 
 o	Example: SELECT emp.last_name FROM employees emp WHERE emp.employee_id NOT IN (SELECT mgr.manager_id FROM employees mgr);
 
@@ -462,11 +462,11 @@ LESSON 22
 
 Set Operators: When we need to get the data from 2 tables or the different from this data.
 
-•	UNION ALL: get the all data from the 2 tables with the duplicate
+•	UNION ALL: get all data from the 2 tables with the duplicate
 
 o	Example: SELECT employee_id, job_id FROM employees WHERE employee_id = 200 UNION ALL SELECT employee_id, job_id FROM job_history WHERE employee_id = 200;
  
-•	UNION: get the all data from the 2 tables without the duplicate
+•	UNION: get all data from the 2 tables without the duplicate
 
 o	Example: SELECT employee_id, job_id FROM employees WHERE employee_id = 200 UNION SELECT employee_id, job_id FROM job_history WHERE employee_id = 200;
  
@@ -480,7 +480,7 @@ o	Example: SELECT employee_id, job_id FROM employees WHERE employee_id = 200 INT
 
 o	Example: SELECT employee_id, job_id FROM employees MINUS SELECT employee_id, job_id FROM job_history;
  
-•	MATCHING: that is a rule that we can’t get more info from the first table without matching the output from the second table.
+•	MATCHING: This is a rule that we can’t get more info from the first table without matching the output from the second table.
 
 o	Example: SELECT employee_id, job_id, salary, 'current' FROM employees UNION SELECT employee_id, job_id, 0, to_char(end_date, 'dd/mm/yyyy') FROM job_history;  
 
@@ -488,7 +488,7 @@ o	Example: SELECT employee_id, job_id, salary, 'current' FROM employees UNION SE
 
 LESSON 23
 
-DML : Data Manipulation Language.
+DML: Data Manipulation Language.
 
 •	A DML Statement is executed when you:
 
@@ -498,11 +498,11 @@ o	Modify existing rows in a table.
 
 o	Remove existing rows from a table.
 
-•	A transaction consists of a collection of DML statements that from a logical unit of work.
+•	A transaction consists of a collection of DML statements from a logical unit of work.
 
 Adding New row to a Table:
 
-•	INSERT Statement Syntax: Add new row to a table by using INSERT statement 1 row at a time.
+•	INSERT Statement Syntax: Add a new row to a table by using INSERT statement 1 row at a time.
 
 o	Example: INSERT INTO departments(department_id, department_name, manager_id, location_id) VALUES (300, 'IT_NADER', 200, 1700);
 
@@ -526,3 +526,25 @@ o	Example 2: INSERT INTO employees(employee_id, last_name, email, hire_date, sal
 
 o	Example 1: INSERT INTO departments(department_id, department_name) VALUES (&D_ID, '&D_Name');
 ----------------------------------
+LESSON 24
+
+That code to create a copy of the Employees table:
+
+CREATE TABLE COPY_EMPLOYEES AS SELECT * FROM EMPLOYEES;
+
+UPDATE: we use it to update data in table and we have to use WHERE because if we didn’t that will update the entire table.
+
+•	Example 1: update copy_employees set department_id = 90;
+
+o	in example 1 we use it without WHERE and the entire table updated the department_id to 90.
+
+•	Example 2: update copy_employees set department_id = 90 WHERE employee_id = 113;
+
+UPDATE with subquery: We can use a subquery to update the row.
+
+•	Example: update copy_employees set salary = (select salary from employees where employee_id = 206), department_id = (select department_id from employees where employee_id = 206) WHERE employee_id = 113;
+
+And we can use null.
+
+•	Example: update copy_employees set salary = null WHERE employee_id = 113;
+
