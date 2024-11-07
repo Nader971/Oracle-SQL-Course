@@ -543,6 +543,9 @@ o	in example 1 we use it without WHERE and the entire table updated the departme
 UPDATE with subquery: We can use a subquery to update the row.
 
 •	Example: update copy_employees set salary = (select salary from employees where employee_id = 206), department_id = (select department_id from employees where employee_id = 206) WHERE employee_id = 113;
+-------------------------------------------------------
+
+
 
 And we can use null.
 
