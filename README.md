@@ -532,7 +532,7 @@ That code to create a copy of the Employees table:
 
 CREATE TABLE COPY_EMPLOYEES AS SELECT * FROM EMPLOYEES;
 
-UPDATE: we use it to update data in table and we have to use WHERE because if we didn’t that will update the entire table.
+UPDATE: we use it to update data in the table and we have to use WHERE because if we don’t that will update the entire table.
 
 •	Example 1: update copy_employees set department_id = 90;
 
@@ -554,7 +554,7 @@ LESSON 25
 
 Note: CREATE TABLE employees_copy AS SELECT * from employees
 
-Removing a row from a table: We can delete a row from a table with the syntax DELETE.
+Removing a row from a table: We can delete a row with the syntax DELETE.
 
 •	Example: DELETE employees_copy WHERE employee_id = 105;
 
@@ -562,11 +562,11 @@ We can use Subquery with delete:
 
 •	Example: DELETE employees_copy WHERE employee_id = (SELECT employee_id FROM EMPLOYEES WHERE SALARY > 20000);
 
-When we remove WHERE we will delete all the table data and if we did we can use ROLLBACK to fix it.
+When we remove WHERE, we will delete all the table data; if we do, we can use ROLLBACK to fix it.
 
   Example: DELETE employees_copy; ROLLBACK;
   
-TRUNCATE: this remove the all table or make a delete but we cant comeback after DDL language.
+TRUNCATE: this removes all tables or makes a delete but we can't come back after the DDL language.
 
   Example: TRUNCATE employees_copy;
 
@@ -584,21 +584,21 @@ Database Transactions: Start and End
 
 •	A DDL or DCL Statement executes (Automatic commit).
 
-•	The User exit SQL Developer or SQL plus.
+•	The User exits SQL Developer or SQL Plus.
 
 •	The system crashes.
 
-COMMIT and ROLLBACK: its like a savepoints and we can use it to be sure and before make the changes.
+COMMIT and ROLLBACK are like savepoints, and we can use them to be sure before making changes.
   
-ROLLBACK: its make you back from the begining and remove the all changes you did it
+ROLLBACK: it brings you back from the beginning and removes the all changes you made it
 
 •	Example: DELETE employees_copy; ROLLBACK;
 
-COMMIT: its commit all changes and save the data.
+COMMIT: it commits all changes and saves the data.
 
 •	Example: DELETE employees_copy; COMMIT;  
 
-SAVEPOINT: its saveing changes and use it to back to savepoint we choose.
+SAVEPOINT: It saves changes and uses it to back to the savepoint we choose.
 
 •	Example: UPDATE employees_copy SET SALARY = 10000 WHERE employee_id = 103;
 SAVEPOINT a;
