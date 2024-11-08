@@ -543,11 +543,80 @@ o	in example 1 we use it without WHERE and the entire table updated the departme
 UPDATE with subquery: We can use a subquery to update the row.
 
 •	Example: update copy_employees set salary = (select salary from employees where employee_id = 206), department_id = (select department_id from employees where employee_id = 206) WHERE employee_id = 113;
--------------------------------------------------------
-
-
 
 And we can use null.
 
 •	Example: update copy_employees set salary = null WHERE employee_id = 113;
+
+---------------------------------------
+
+LESSON 25
+
+Note: CREATE TABLE employees_copy AS SELECT * from employees
+
+Removing a row from a table: We can delete a row from a table with the syntax DELETE.
+
+•	Example: DELETE employees_copy WHERE employee_id = 105;
+
+We can use Subquery with delete: 
+
+•	Example: DELETE employees_copy WHERE employee_id = (SELECT employee_id FROM EMPLOYEES WHERE SALARY > 20000);
+
+When we remove WHERE we will delete all the table data and if we did we can use ROLLBACK to fix it.
+
+  Example: DELETE employees_copy; ROLLBACK;
+  
+TRUNCATE: this remove the all table or make a delete but we cant comeback after DDL language.
+
+  Example: TRUNCATE employees_copy;
+
+  --------------------------------------------------------------------
+  
+LESSON 26
+
+Database Transactions: Start and End
+
+•	Begin when the DML SQL Statement is executed.
+
+•	End with one of the following events:
+
+•	A COMMIT or ROLLBACK Statement is issued.
+
+•	A DDL or DCL Statement executes (Automatic commit).
+
+•	The User exit SQL Developer or SQL plus.
+
+•	The system crashes.
+
+COMMIT and ROLLBACK: its like a savepoints and we can use it to be sure and before make the changes.
+  
+ROLLBACK: its make you back from the begining and remove the all changes you did it
+
+•	Example: DELETE employees_copy; ROLLBACK;
+
+COMMIT: its commit all changes and save the data.
+
+•	Example: DELETE employees_copy; COMMIT;  
+
+SAVEPOINT: its saveing changes and use it to back to savepoint we choose.
+
+•	Example: UPDATE employees_copy SET SALARY = 10000 WHERE employee_id = 103;
+SAVEPOINT a;
+UPDATE employees_copy SET SALARY = 10000 WHERE employee_id = 104;
+SAVEPOINT b;
+UPDATE employees_copy SET SALARY = 10000 WHERE employee_id = 105;
+DELETE employees_copy;
+ROLLBACK TO SAVEPOINT b;
+
+FOR UPDATE: use to lock the other users from select the rows you use and we can make from many tables so we can use joins.
+
+•	Example: SELECT e.employee_id, e.salary, e.commission_pct FROM EMPLOYEES e JOIN departments d USING (department_id)
+WHERE job_id = 'ST_CLERK' AND location_id = 1500
+FOR UPDATE
+ORDER BY e.employee_id;
+
+--------------------------------------------------------------------------------------
+
+
+
 
