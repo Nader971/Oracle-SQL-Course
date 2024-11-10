@@ -621,27 +621,27 @@ LESSON 27
 
 Database Objects: 
 
-•	Table: Basic Unit of storage, composed with rows.
+•	Table: The basic unit of storage is composed of rows.
 
-•	View: Its show you data from tables to edit and represent.
+•	View: It shows you data from tables to edit and represent.
 
 •	Sequence: Generates Numeric values.
 
 •	Index: Improves the performance of some queries.
 
-•	Synonym: we can use to give sample names to objects.
+•	Synonym: we can use it to give sample names to objects.
 
 Naming Rules:
 
-•	Must to begin with a latter.
+•	Must begin with a letter.
 
 •	Must be 1-30 char long.
 
-•	Must be contain only A-Z, a-z, 0-9, _, $, and #.
+•	Must contain only A-Z, a-z, 0-9, _, $, and #.
 
 •	Must not duplicate the object name in the same user.
 
-•	Most not be an Oracle server words like: SELECT, FROM, ……etc.	
+•	Most not be an Oracle server words like SELECT, FROM, ……etc.	
 
 CREATE TABLE Statement:
 
@@ -651,17 +651,17 @@ CREATE TABLE Statement:
  
 LESSON 28
 
-Constraints: Is to make rules make less miss entering wrong data.
+Constraints: To make rules make less miss entering wrong data.
 
 •	NOT NULL: Can’t make the table null or empty.
 
-•	UNIQUE: Is a unique data can be duplicated.
+•	UNIQUE: A unique data that can be duplicated.
 
 •	CHECK: Check if the data entered is required.
 
-•	PRIMARY KEY: It’s a unique key generated and cant be duplicated.
+•	PRIMARY KEY: It’s a unique key generated and can't be duplicated.
 
-•	FOREIGN KEY: It's make reference to PK or another table and can be duplicated and can be null.
+•	FOREIGN KEY: It refers to PK or another table and can be duplicated and nullified.
 
 o	Example: CREATE TABLE EMP(
 emp_id number(10),
@@ -678,7 +678,7 @@ CONSTRAINT dept_fk FOREIGN KEY(dept_id) REFERENCES DEPARTMENTS(DEPARTMENT_ID));
 
 LESSON 29
 
-Create Table Using Subquery: We can copy a table with subquery from another table.
+Create a Table Using Subquery: We can copy a table with a subquery from another table.
 
 •	Example: CREATE TABLE EMP100 AS (SELECT * FROM employees WHERE department_id = 100;
 
