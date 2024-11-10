@@ -617,6 +617,72 @@ ORDER BY e.employee_id;
 
 --------------------------------------------------------------------------------------
 
+LESSON 27
+
+Database Objects: 
+
+•	Table: Basic Unit of storage, composed with rows.
+
+•	View: Its show you data from tables to edit and represent.
+
+•	Sequence: Generates Numeric values.
+
+•	Index: Improves the performance of some queries.
+
+•	Synonym: we can use to give sample names to objects.
+
+Naming Rules:
+
+•	Must to begin with a latter.
+
+•	Must be 1-30 char long.
+
+•	Must be contain only A-Z, a-z, 0-9, _, $, and #.
+
+•	Must not duplicate the object name in the same user.
+
+•	Most not be an Oracle server words like: SELECT, FROM, ……etc.	
+
+CREATE TABLE Statement:
+
+•	Example: CREATE TABLE DEMP(d_id number(9), first_name varchar2(30), last_name varchar2(30), create_date date DEFAULT sysdate);
+
+ -------------------------------------------------------------
+ 
+LESSON 28
+
+Constraints: Is to make rules make less miss entering wrong data.
+
+•	NOT NULL: Can’t make the table null or empty.
+
+•	UNIQUE: Is a unique data can be duplicated.
+
+•	CHECK: Check if the data entered is required.
+
+•	PRIMARY KEY: It’s a unique key generated and cant be duplicated.
+
+•	FOREIGN KEY: It's make reference to PK or another table and can be duplicated and can be null.
+
+o	Example: CREATE TABLE EMP(
+emp_id number(10),
+emp_name varchar2(30) NOT NULL, 
+salary NUMBER(8,2),
+email varchar2(50),
+dept_id number(10),
+CONSTRAINT emp_pk  PRIMARY KEY(emp_id),
+CONSTRAINT sa_ck CHECK(salary > 1000) ,
+CONSTRAINT em_un UNIQUE(email),
+CONSTRAINT dept_fk FOREIGN KEY(dept_id) REFERENCES DEPARTMENTS(DEPARTMENT_ID));
+
+---------------------------------------------------------------
+
+LESSON 29
+
+Create Table Using Subquery: We can copy a table with subquery from another table.
+
+•	Example: CREATE TABLE EMP100 AS (SELECT * FROM employees WHERE department_id = 100;
+
+----------------------------------------------------------
 
 
 
