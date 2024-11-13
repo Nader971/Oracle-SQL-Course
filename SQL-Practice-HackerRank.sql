@@ -26,39 +26,54 @@ If there is more than one smalle  st or largest city, choose the one that comes 
 
 11- Query the list of CITY names starting with vowels (i.e., a, e, i, o, or u) from STATION. Your result cannot contain duplicates. 
 
-SELECT DISTINCT city FROM station where city like 'I%' or city like 'E%' or city like 'A%' or city like 'O%' or city like 'U%';   
+  SELECT DISTINCT city FROM station where city like 'I%' or city like 'E%' or city like 'A%' or city like 'O%' or city like 'U%';   
 
 12- Query the list of CITY names ending with vowels (a, e, i, o, u) from STATION. Your result cannot contain duplicates. 
 
-SELECT DISTINCT city FROM station where city like '%i' or city like '%e' or city like '%a' or city like '%o' or city like '%u';   
+  SELECT DISTINCT city FROM station where city like '%i' or city like '%e' or city like '%a' or city like '%o' or city like '%u';   
 
 13- Query the list of CITY names from STATION which have vowels (i.e., a, e, i, o, and u) as both their first and last characters. Your result cannot contain duplicates. 
 
-SELECT DISTINCT CITY FROM STATION  WHERE SUBSTR(CITY,1,1) IN ('A', 'E', 'I', 'O', 'U')  AND SUBSTR(CITY,-1,1) IN ('a', 'e', 'i', 'o', 'u'); 
+  SELECT DISTINCT CITY FROM STATION  WHERE SUBSTR(CITY,1,1) IN ('A', 'E', 'I', 'O', 'U')  AND SUBSTR(CITY,-1,1) IN ('a', 'e', 'i', 'o', 'u'); 
 
 14- Query the list of CITY names from STATION that do not start with vowels. Your result cannot contain duplicates. 
 
-SELECT DISTINCT CITY FROM STATION  WHERE SUBSTR(CITY,1,1) NOT IN ('A', 'E', 'I', 'O', 'U'); 
+    SELECT DISTINCT CITY FROM STATION  WHERE SUBSTR(CITY,1,1) NOT IN ('A', 'E', 'I', 'O', 'U'); 
 
 15- Query the list of CITY names from STATION that do not end with vowels. Your result cannot contain duplicates. 
 
-SELECT DISTINCT CITY FROM STATION  WHERE SUBSTR(CITY,-1,1) NOT IN ('a', 'e', 'i', 'o', 'u'); 
+  SELECT DISTINCT CITY FROM STATION  WHERE SUBSTR(CITY,-1,1) NOT IN ('a', 'e', 'i', 'o', 'u'); 
 
 16 - Query the list of CITY names from STATION that either do not start with vowels or do not end with vowels. Your result cannot contain duplicates. 
 
-SELECT DISTINCT CITY FROM STATION  WHERE SUBSTR(CITY,1,1) NOT IN ('A', 'E', 'I', 'O', 'U')  OR SUBSTR(CITY,-1,1) NOT IN ('a', 'e', 'i', 'o', 'u'); 
-
- 
-
- 
+  SELECT DISTINCT CITY FROM STATION  WHERE SUBSTR(CITY,1,1) NOT IN ('A', 'E', 'I', 'O', 'U')  OR SUBSTR(CITY,-1,1) NOT IN ('a', 'e', 'i', 'o', 'u'); 
 
 17-  Query the list of CITY names from STATION that do not start with vowels and do not end with vowels. Your result cannot contain duplicates. 
 
-SELECT DISTINCT CITY FROM STATION  WHERE SUBSTR(CITY,1,1) NOT IN ('A', 'E', 'I', 'O', 'U')  AND SUBSTR(CITY,-1,1) NOT IN ('a', 'e', 'i', 'o', 'u'); 
+  SELECT DISTINCT CITY FROM STATION  WHERE SUBSTR(CITY,1,1) NOT   IN ('A', 'E', 'I', 'O', 'U')  AND SUBSTR(CITY,-1,1) NOT IN ('a', 'e', 'i', 'o', 'u'); 
+
+18- Query the Name of any student in STUDENTS who scored higher than  Marks. 
+Order your output by the last three characters of each name. 
+If two or more students both have names ending in the same last three characters (i.e.: Bobby, Robby, etc.), secondary sort them by ascending ID.
+  
+  SELECT name FROM students WHERE marks > 75 ORDER BY substr(name,-3),id;
+
+19- Write a query that prints a list of employee names (i.e.: the name attribute) from the Employee table in alphabetical order.
+
+  SELECT name FROM employee ORDER BY name;
+  
+20- Write a query that prints a list of employee names (i.e.: the name attribute) for employees in Employee having a salary greater than  per month who have been employees for less than  months. 
+Sort your result by ascending employee_id.
+
+  SELECT name FROM employee WHERE salary > 2000 and months < 10 ORDER BY employee_id;
+  
+21- 
+
 
 
  
 
 */
 
+select last_name, substr(last_name,-3) from employees order by last_name;
 
